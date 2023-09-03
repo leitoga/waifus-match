@@ -36,7 +36,6 @@ public class Board : MonoBehaviour
         SetupPieces();
     }
 
-
     private void SetupPieces()
     {
         for (int x = 0; x < width; x++)
@@ -197,18 +196,18 @@ public class Board : MonoBehaviour
 
     public List<Piece>GetMatchByPiece(int xpos, int ypos, int minPieces = 3)
     {
-        var upMatches = GetMatchByDirection(xpos, ypos, new Vector2(0, 1), 2);
-        var downMatches = GetMatchByDirection(xpos, ypos, new Vector2(0, -1), 2);
-        var rightMatches = GetMatchByDirection(xpos, ypos, new Vector2(1, 0), 2);
-        var leftMatches = GetMatchByDirection(xpos, ypos, new Vector2(-1, 0), 2);
+        var upMatchs = GetMatchByDirection(xpos, ypos, new Vector2(0, 1), 2);
+        var downMatchs = GetMatchByDirection(xpos, ypos, new Vector2(0, -1), 2);
+        var rightMatchs = GetMatchByDirection(xpos, ypos, new Vector2(1, 0), 2);
+        var leftMatchs = GetMatchByDirection(xpos, ypos, new Vector2(-1, 0), 2);
 
-        if(upMatches == null) upMatches = new List<Piece>();
-        if (downMatches == null) upMatches = new List<Piece>();
-        if (rightMatches == null) upMatches = new List<Piece>();
-        if (leftMatches == null) upMatches = new List<Piece>();
+        if (upMatchs == null) upMatchs = new List<Piece>();
+        if (downMatchs == null) upMatchs = new List<Piece>();
+        if (rightMatchs == null) upMatchs = new List<Piece>();
+        if (leftMatchs == null) upMatchs = new List<Piece>();
 
-        var verticalMatches = upMatches.Union(downMatches).ToList();
-        var horizontalMatches = leftMatches.Union(rightMatches).ToList();
+        var verticalMatches = upMatchs.Union(downMatchs).ToList();
+        var horizontalMatches = leftMatchs.Union(rightMatchs).ToList();
 
         var foundMatches = new List<Piece>();
         
