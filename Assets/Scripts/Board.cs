@@ -202,9 +202,9 @@ public class Board : MonoBehaviour
         var leftMatchs = GetMatchByDirection(xpos, ypos, new Vector2(-1, 0), 2);
 
         if (upMatchs == null) upMatchs = new List<Piece>();
-        if (downMatchs == null) upMatchs = new List<Piece>();
-        if (rightMatchs == null) upMatchs = new List<Piece>();
-        if (leftMatchs == null) upMatchs = new List<Piece>();
+        if (downMatchs == null) downMatchs = new List<Piece>();
+        if (rightMatchs == null) rightMatchs = new List<Piece>();
+        if (leftMatchs == null) leftMatchs = new List<Piece>();
 
         var verticalMatches = upMatchs.Union(downMatchs).ToList();
         var horizontalMatches = leftMatchs.Union(rightMatchs).ToList();
