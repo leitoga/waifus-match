@@ -36,6 +36,7 @@ public class Board : MonoBehaviour
         SetupPieces();
     }
 
+
     private void SetupPieces()
     {
         for (int x = 0; x < width; x++)
