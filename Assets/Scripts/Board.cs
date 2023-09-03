@@ -56,19 +56,19 @@ public class Board : MonoBehaviour
         float newPosX = (float)width / 2f;
         float newPosY = (float)height / 2f;
 
-        Camera.main.transform.position = new Vector3(newPosX - 0.5f, newPosY - 0.5f + cameraVerticalOffset, - 10f);
+        Camera.main.transform.position = new Vector3(newPosX - 0.5f, newPosY - 0.5f + cameraVerticalOffset, -10f);
 
         float horizontal = width + 1f;
         float vertical = (height / 2f) + 1f;
 
-        Camera.main.orthographicSize = horizontal > vertical ? horizontal + cameraSizeOffset: vertical + cameraVerticalOffset;
+        Camera.main.orthographicSize = horizontal > vertical ? horizontal + cameraSizeOffset : vertical + cameraVerticalOffset;
     }
 
     private void SetupBoard()
     {
-        for(int x=0; x<width; x++)
+        for (int x = 0; x < width; x++)
         {
-            for(int y=0; y<height; y++)
+            for (int y = 0; y < height; y++)
             {
                 var o = Instantiate(tileObject, new Vector3(x, y, -5), Quaternion.identity);
                 o.transform.parent = transform;
@@ -90,7 +90,7 @@ public class Board : MonoBehaviour
 
     public void TileUp(Tile tile_)
     {
-        if(startTile!=null && endTile != null && IsCloseTo(startTile, endTile))
+        if (startTile != null && endTile != null && IsCloseTo(startTile, endTile))
         {
             StartCoroutine(SwapTiles());
         }
@@ -145,7 +145,7 @@ public class Board : MonoBehaviour
 
     public bool IsCloseTo(Tile start, Tile end)
     {
-        if(Math.Abs((start.x-end.x))==1 && start.y == end.y)
+        if (Math.Abs((start.x - end.x)) == 1 && start.y == end.y)
         {
             return true;
         }
@@ -194,7 +194,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    public List<Piece>GetMatchByPiece(int xpos, int ypos, int minPieces = 3)
+    public List<Piece> GetMatchByPiece(int xpos, int ypos, int minPieces = 3)
     {
         var upMatchs = GetMatchByDirection(xpos, ypos, new Vector2(0, 1), 2);
         var downMatchs = GetMatchByDirection(xpos, ypos, new Vector2(0, -1), 2);
@@ -210,8 +210,8 @@ public class Board : MonoBehaviour
         var horizontalMatches = leftMatchs.Union(rightMatchs).ToList();
 
         var foundMatches = new List<Piece>();
-        
-        if(verticalMatches.Count>= minPieces)
+
+        if (verticalMatches.Count >= minPieces)
         {
             foundMatches = foundMatches.Union(verticalMatches).ToList();
         }
